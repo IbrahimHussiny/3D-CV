@@ -1,0 +1,61 @@
+\documentclass[a4paper, twoside, english]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{ihci}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\graphicspath{{./../figures/}}
+
+\title{Exercise 1 - Theory}
+\author{
+	Abdelaziz, Ibrahim
+	\and
+	Robroo
+	\and
+	Berg, Oliver
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Properties of Rotation Matrices}
+
+\subsection{Showing that $U^T = U^{-1}$ holds for \textit{general} rotation matrix $U \in \mathbb{R}^3$}
+
+Generally note that $UU^{-1}=I$ subject to $U^{-1} = U^T$, as provided by $U$ being rotation matrix and as such orthogonal, yields $UU^T = I$.
+
+For given column-vectors $c_1, c_2, c_3$ of $U$ we observe 
+
+\begin{equation*}
+	<c_i, c_j> = \delta_{i j}
+\end{equation*}
+
+which in combination with
+
+\begin{equation*}
+	U^T = (c_1, c_2, c_3)^T = (c_1^T, c_2^T, c_2^T)
+\end{equation*}
+
+results in
+
+\begin{equation*}
+	UU^T = (<c_i, c_j>)_{1 \le i, j \le 3} = I
+\end{equation*}
+
+Motivated by \cite{MathematicsSEMatrixTransposeIdentity}\cite{MathematicsSEMatrixTransposeIdentity2}\cite{WikiOrthogonaleMatrix}.
+
+
+\subsection{Geometric interpretation of determinant of 3x3 matrix}
+
+Bla
+
+\section{Transformation Chain}
+
+Blub
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography.bib}
+\end{document}
