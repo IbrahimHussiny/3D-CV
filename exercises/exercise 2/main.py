@@ -8,6 +8,9 @@ import scipy.io as io
 
 outputFolderPath = "./outputs/"
 
+#create output folder if not exists
+os.makedirs(outputFolderPath)
+
 def getExtrinsicParametersMat(RotationMatrix, T):
 	# upper left 3*3 matrix 
 	extrinsicParametersMat = np.array(RotationMatrix)
