@@ -8,7 +8,7 @@
 
 \graphicspath{{./../figures/}}
 
-\title{Exercise 2 - Theory}
+\title{Exercise 1 - Theory}
 \author{
 	Abdelaziz, Ibrahim
 	\and
@@ -85,12 +85,19 @@ and $
 \end{bmatrix}^T 
 $ are the coordinates of a 3D point in the world coordinate space
 
+Homogeneous Coordinates is good. It enables us to use Matrix Multiplication on all transformations. To represent 3d coordinate points you need to have 4 elements in the vector.
+\begin{equation}
+[x,y,z,w] = [x/w,y/w,z/w]
+\end{equation}
+However, when $w$ in $(1)$ is $0$. There is no such 3D vector on that. We call points in this form vanishing point.\cite{TheTruthBehindHomoCoords}
+
 \subsection{Chain Step}
 \begin{equation*}
 \begin{bmatrix}
 x_s \\
 y_s \\
-z_s
+z_s \\
+1
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -110,10 +117,16 @@ R & T \\
 \end{bmatrix}$ to the world coordinates $[X_s,Y_s,Z_s,1]^T$ gives a camera coordinates $[x_s,y_s,z_s,1]^T$
 
 \begin{equation*}
-[u',v',w']^T =\begin{bmatrix}
-a_x & s & x_0  \\
-0 & a_y & y_0 \\
-0 & 0 & 1
+\begin{bmatrix}
+u' \\
+v' \\
+w'
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_x & s & x_0 & 0 \\
+0 & a_y & y_0 & 0\\
+0 & 0 & 1 & 0
 \end{bmatrix}
 \begin{bmatrix}
 x_s \\
@@ -134,9 +147,17 @@ a_x & s & x_0  \\
 Where \begin{itemize}
 	\item $a_x$ and $a_y$ are focal lengths in pixel 
 	\item $x_0$ and $y_0$ are the image center
-	\item $s$ represents the skew coefficient between the x and the y axis, and is often 0 \cite{CameraResectioning}\cite{OpenCVDocCameraCalib}
-	\item $K$ can transform image plane to pixels
+	\item $s$ the skew coefficient between the x,y axis which is 0 in most cases \cite{CameraResectioning}\cite{OpenCVDocCameraCalib}
 \end{itemize}
+$K$ can transform image plane to pixels and $\begin{bmatrix}
+I_3 &|& O_3 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{bmatrix}$ can be use for perspective projection which can be combined to K matrix and facilitate the matrix multiplication
 
 
 
@@ -148,7 +169,7 @@ R & T \\
 \end{bmatrix}
 \end{equation*}
 
-This extrinsic parameters is used to explain the camera motion along the scene. It translates world-coordinates of a point $[X,Y,Z]$ to a camera coordinate system
+This extrinsic parameters is used to explain the camera motion along the scene. It translates world-coordinates of a point $[X,Y,Z,1]$ to a camera coordinate system
 
 \begin{equation*} R = 
 \begin{bmatrix}
@@ -163,11 +184,9 @@ T_y \\
 T_z
 \end{bmatrix}
 \end{equation*}
-$R$ is a rotational matrix such that it helps rotating the point from world to camera
-$T$ is a translational metric to translate the point from world to camera
-
-
-
+$R$ is a rotational matrix such that it helps rotating the point from world to camera.
+$T$ is a translational metric to translate the point from world to camera.
+Motivated from \cite{SomeLinearAlgebra}
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
