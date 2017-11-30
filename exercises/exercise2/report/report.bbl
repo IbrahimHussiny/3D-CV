@@ -39,4 +39,10 @@ Orthogonale matrix. [Online]. Available:
   \url{https://de.wikipedia.org/wiki/Orthogonale_Matrix}
 \BIBentrySTDinterwordspacing
 
+\bibitem{3blue1brownLinAlg5Determinant}
+\BIBentryALTinterwordspacing
+The determinant | essence of linear algebra, chapter 5. [Online]. Available:
+  \url{https://www.youtube.com/watch?v=Ip3X9LOh2dk}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
