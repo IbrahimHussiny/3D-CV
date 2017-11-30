@@ -8,11 +8,11 @@
 
 \graphicspath{{./../figures/}}
 
-\title{Exercise 1 - Theory}
+\title{Exercise 2 - Theory}
 \author{
 	Abdelaziz, Ibrahim
 	\and
-	Robroo
+	Somkiadcharoen, Robroo
 	\and
 	Berg, Oliver
 }
@@ -50,14 +50,123 @@ Motivated by \cite{MathematicsSEMatrixTransposeIdentity}\cite{MathematicsSEMatri
 
 \subsection{Geometric interpretation of determinant of 3x3 matrix}
 
-The determinant of a matrix $A \in \mathbb{R}^3$ has the geometric intition of a scaling factor for a given (unit) volume within the cartesian (standard) coordinate system and how its volume changes when applying the matrix transform. \cite{3blue1brownLinAlg5Determinant}
+The determinant of a matrix $A \in \mathbb{R}^3$ has the geometric intuition of a scaling factor for a given (unit) volume within the cartesian (standard) coordinate system and how its volume changes when applying the matrix transform. \cite{3blue1brownLinAlg5Determinant}
 
 As such, with $det(A) = 1$ the matrix does not change the size of any given volume within its space, which intuitively makes sense for a rotation matrices as its only task is to rotate - not scale - within any given coordinate system.
 
 
 \section{Transformation Chain}
 
-[...]
+Normally, the transformation mapping from the world coordinate system to pixel coordinate system is.
+
+\begin{equation*}
+	\begin{bmatrix}
+		u' \\
+		v' \\
+		w'
+	\end{bmatrix} = K[I_3| O_3]
+	\begin{bmatrix}
+	R & T \\
+	0_3^T & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+	X_s \\
+	Y_s \\
+	Z_s \\
+	1
+	\end{bmatrix}
+\end{equation*}
+
+
+Where $x_{pix}$ and $y_{pix}$ are $u'/w'$ and $v'/w'$ 
+and $
+\begin{bmatrix}
+	X_s & Y_s & Z_s & 1
+\end{bmatrix}^T 
+$ are the coordinates of a 3D point in the world coordinate space
+
+\subsection{Chain Step}
+\begin{equation*}
+\begin{bmatrix}
+x_s \\
+y_s \\
+z_s
+\end{bmatrix}
+=
+\begin{bmatrix}
+	R & T \\
+	0_3^T & 1
+\end{bmatrix}
+\begin{bmatrix}
+	X_s \\
+	Y_s \\
+	Z_s \\
+	1
+\end{bmatrix}
+\end{equation*}
+multiplying $\begin{bmatrix}
+R & T \\
+0_3^T & 1
+\end{bmatrix}$ to the world coordinates $[X_s,Y_s,Z_s,1]^T$ gives a camera coordinates $[x_s,y_s,z_s,1]^T$
+
+\begin{equation*}
+[u',v',w']^T =\begin{bmatrix}
+a_x & s & x_0  \\
+0 & a_y & y_0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_s \\
+y_s \\
+z_s \\
+1
+\end{bmatrix}
+\end{equation*}
+By multiplying the camera coordinate points with calibration matrix, the result is in the image plane coordinates. After that we can do $u'/w'$ and $v'/w'$ to get the pixel coordinates
+
+\subsection{Intrinsic parameters}
+
+$K$ is a camera matrix, or a matrix of intrinsic parameters $K=\begin{bmatrix}
+a_x & s & x_0  \\
+0 & a_y & y_0 \\
+0 & 0 & 1
+\end{bmatrix}$ 
+Where \begin{itemize}
+	\item $a_x$ and $a_y$ are focal lengths in pixel 
+	\item $x_0$ and $y_0$ are the image center
+	\item $s$ represents the skew coefficient between the x and the y axis, and is often 0 \cite{CameraResectioning}\cite{OpenCVDocCameraCalib}
+	\item $K$ can transform image plane to pixels
+\end{itemize}
+
+
+
+\subsection{Extrinsic parameters}
+\begin{equation*} extrinsicParams = 
+\begin{bmatrix}
+R & T \\
+0_3^T & 1
+\end{bmatrix}
+\end{equation*}
+
+This extrinsic parameters is used to explain the camera motion along the scene. It translates world-coordinates of a point $[X,Y,Z]$ to a camera coordinate system
+
+\begin{equation*} R = 
+\begin{bmatrix}
+I_i & J_i & K_i \\
+I_j & J_j & K_j \\
+I_k & J_k & K_k 
+\end{bmatrix}
+T=
+\begin{bmatrix}
+T_x \\
+T_y \\
+T_z
+\end{bmatrix}
+\end{equation*}
+$R$ is a rotational matrix such that it helps rotating the point from world to camera
+$T$ is a translational metric to translate the point from world to camera
+
+
 
 
 \bibliographystyle{IEEEtran}
