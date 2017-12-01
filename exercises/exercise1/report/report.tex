@@ -188,6 +188,18 @@ $R$ is a rotational matrix such that it helps rotating the point from world to c
 $T$ is a translational metric to translate the point from world to camera.
 Motivated from \cite{SomeLinearAlgebra}
 
+
+\section{Implementation}
+
+The final implementation task can be found in \lstinline{main.py}.
+
+Concerning output (images in \textit{output} directory), projected points without correction of distortion are shown in red, those with correction of radial distortion in green; see \autoref{fig:sampleOutputImg}.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{00000.jpg}
+  \caption{Sample output image\label{fig:sampleOutputImg}}
+\end{figure}
+
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
 \end{document}

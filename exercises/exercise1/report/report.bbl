@@ -45,4 +45,28 @@ The determinant | essence of linear algebra, chapter 5. [Online]. Available:
   \url{https://www.youtube.com/watch?v=Ip3X9LOh2dk}
 \BIBentrySTDinterwordspacing
 
+\bibitem{TheTruthBehindHomoCoords}
+\BIBentryALTinterwordspacing
+The truth behind homogeneous coordinates. [Online]. Available:
+  \url{http://deltaorange.com/2012/03/08/the-truth-behind-homogenous-coordinates/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{CameraResectioning}
+\BIBentryALTinterwordspacing
+Camera resectioning. [Online]. Available:
+  \url{https://en.wikipedia.org/wiki/Camera_resectioning}
+\BIBentrySTDinterwordspacing
+
+\bibitem{OpenCVDocCameraCalib}
+\BIBentryALTinterwordspacing
+Camera calibration and 3d reconstruction. [Online]. Available:
+  \url{https://docs.opencv.org/2.4.13/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{SomeLinearAlgebra}
+\BIBentryALTinterwordspacing
+Some linear algebra. [Online]. Available:
+  \url{http://math.hws.edu/graphicsbook/c3/s5.html#gl1geom.5.3}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
