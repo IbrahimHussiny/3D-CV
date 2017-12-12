@@ -6,6 +6,12 @@ import cmath
 import scipy
 import scipy.io as io
 
+def normalize(v):
+    norm=np.linalg.norm(v, ord=1)
+    if norm==0:
+        norm=np.finfo(v.dtype).eps
+    return v/norm
+
 if __name__ == '__main__':
     data = io.loadmat('./ex2.mat')
 
@@ -34,4 +40,15 @@ if __name__ == '__main__':
     #Do SVD to correct R2, and set singular matrix to I 
     U , W, V = np.linalg.svd(R2)
     print "R2 after correction=", np.dot(U,V)
+
+    #part 4, since Z = 0 we have H = K[r1r2t]
+    Rt = np.around(np.dot(inv(K),H3))
+    r1= normalize(np.array(Rt[:,0]))
+    r2 = normalize(np.array(Rt[:,1]))
+    r3 = np.cross(np.transpose(r1),np.transpose(r2))
+
+    R3 = np.column_stack((r1,r2,np.transpose(r3)))
+    print "R3 = ", R3
+    print "t3= ", Rt[:,2]
+
     
