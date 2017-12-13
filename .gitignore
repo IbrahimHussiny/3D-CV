@@ -1,0 +1,10 @@
+.idea
+lec*.pdf
+# latex-output intermediate files
+*.aux
+*.blg
+*latexmk
+*.fls
+*.log
+*.out
+*.dvi
