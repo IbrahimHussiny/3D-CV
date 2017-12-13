@@ -1,0 +1,49 @@
+\documentclass[a4paper, twoside, english]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{ihci}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\graphicspath{{./../figures/}}
+
+\title{Exercise 2 - Theory}
+\author{
+	Abdelaziz, Ibrahim
+	\and
+	Somkiadcharoen, Robroo
+	\and
+	Berg, Oliver
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Theory}
+
+\subsection{Homography Definition}
+In case of $P^2$ (2D Projection plane) we have homogeneous coordinates as $[x_1, x_2, x_3]$ and the $H$ transformation matrix is of size $3\times3$ as $\begin{bmatrix}
+h_11&h12&h13 \\
+h_21&h22&h23 \\
+h_31&h32&h33 \\
+\end{bmatrix}$ where 8 of them are independent ratios(DOF) and another one is the gain.
+
+Using the same logic as above, you can get a point from $P^n$ (n-dimensional Projection Space) as $[x_1, x_2, ... x_n+1]$ and the $H$ transformation matrix is of size $(n+1)\times (n+1)$. Thus, $(n+1)^2-1$ DOF. Motivated From \cite{Stackoverflow}\cite{DynamicPntoPnAlgnmnt}
+
+\subsection{Line preservation}
+
+Given that a point $x=[x1,x2,x3]$ is a point in 2D Projection plane which is also on a line $l$, and all the points are on $l$ which gives $l^Tx_i=0$. We can derive
+\begin{equation}
+l^Tx_i=0=l^TH^{-1}Hx_i\label{eq:1}
+\end{equation}
+From \eqref{eq:1} we get that the points $x'=Hx_i$ that is transformed lie on the line $l'=l^TH^{-1}$ In other words, we can perceived from the equation that points are transformed by $x'$ and line is transformed by $l'$
+
+Highly Motivated by \cite{ProjectiveGeomUMD} \cite{ProjectiveGeomIIT}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography.bib}
+\end{document}
