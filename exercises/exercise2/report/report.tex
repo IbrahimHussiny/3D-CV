@@ -26,12 +26,12 @@
 
 \subsection{Homography Definition}
 In case of $P^2$ (2D Projection plane) we have homogeneous coordinates as $[x_1, x_2, x_3]$ and the $H$ transformation matrix is of size $3\times3$ as $\begin{bmatrix}
-h_11&h12&h13 \\
-h_21&h22&h23 \\
-h_31&h32&h33 \\
+	h_{11}&h_{12}&h_{13} \\
+	h_{21}&h_{22}&h_{23}\\
+	h_{31}&h_{32}&h_{33} \\
 \end{bmatrix}$ where 8 of them are independent ratios(DOF) and another one is the gain.
 
-Using the same logic as above, you can get a point from $P^n$ (n-dimensional Projection Space) as $[x_1, x_2, ... x_n+1]$ and the $H$ transformation matrix is of size $(n+1)\times (n+1)$. Thus, $(n+1)^2-1$ DOF. Motivated From \cite{Stackoverflow}\cite{DynamicPntoPnAlgnmnt}
+Using the same logic as above, you can get a point from $P^n$ (n-dimensional Projection Space) as $[x_1, x_2, ... , x_n, x_{n+1}]$ and the $H$ transformation matrix is of size $(n+1)\times (n+1)$. Thus, $(n+1)^2-1$ DOF. Motivated From \cite{Stackoverflow}\cite{DynamicPntoPnAlgnmnt}
 
 \subsection{Line preservation}
 
@@ -43,6 +43,31 @@ From \eqref{eq:1} we get that the points $x'=Hx_i$ that is transformed lie on th
 
 Highly Motivated by \cite{ProjectiveGeomUMD} \cite{ProjectiveGeomIIT}
 
+\section{Implementation}
+
+You may find the implementation code inside the \lstinline{main.py} file. To run the code, call \lstinline{python main.py}.
+
+\subsection{Relative rotation estimation from homography}
+
+To 4. : $H_2$ needs correction, as it not strictly conforms to the properties of a rotation matrix, namely $MM^T$ does not exactly match the identity matrix and its determinant is not strictly equal to 1. This is most likely due to measuring errors. 
+
+\subsection{Camera pose estimation from homography}
+
+To 2. ``meaning of $t = -RC$'': Motivated by \cite{EpixeaT-RC}, because the chessboard lies within the xy-plane, it holds 
+\begin{equation}
+	[K|0_3]
+	\begin{bmatrix}
+		R	& -RC \\
+		0_3^T	& 1 \\
+	\end{bmatrix} (X Y Z 1)^T
+\end{equation}
+being subject to $Z = 0$ corresponds to
+\begin{equation}
+	K[r_1 r_2 t] (X Y 1)^T
+\end{equation}
+where $t$ now responds to the initial $-RC$. We translate the virtual camera to the real camera.
+
+To 3. ``3rd element of $t$ being negative'':
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
