@@ -49,7 +49,7 @@ You may find the implementation code inside the \lstinline{main.py} file. To run
 
 \subsection{Relative rotation estimation from homography}
 
-To 4. : $H_2$ needs correction, as it not strictly conforms to the properties of a rotation matrix, namely $MM^T$ does not exactly match the identity matrix and its determinant is not strictly equal to 1. This is most likely due to measuring errors. 
+To 4. : As stated in the Exercise "H2 was computed after manually rotating the camera", since rotating the camera manually would cause some translation which we neglected in solving for $R2$, then we will need to do correction to it.  
 
 \subsection{Camera pose estimation from homography}
 
@@ -67,7 +67,7 @@ being subject to $Z = 0$ corresponds to
 \end{equation}
 where $t$ now responds to the initial $-RC$. We translate the virtual camera to the real camera.
 
-To 3. ``3rd element of $t$ being negative'': With the translation being negative, this means the camera resides within the positive X-Y-Z quadrant of the world coordinate system, such that we need to do negative translation to move the camera to the world coordinate systems origin.
+To 3. ``3rd element of $t$ being negative'': With the translation being negative, this means the camera resides within the positive X-Y-Z quadrant of the world coordinate system, such that we need to do negative translation to align the origin of the camera coordinate system with the orign of the world coordinate system.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography.bib}
