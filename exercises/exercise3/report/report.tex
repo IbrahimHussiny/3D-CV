@@ -1,0 +1,45 @@
+\documentclass[a4paper, twoside, english]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{ihci}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\graphicspath{{./../figures/}}
+
+\title{Exercise 3 - Theory}
+\author{
+	Abdelaziz, Ibrahim
+	\and
+	Somkiadcharoen, Robroo
+	\and
+	Berg, Oliver
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Theory}
+
+\subsection{T1}
+Point $x_0$ constrains the position of $x_1$ to lie on the corresponding epipolar line $l_1$ on the second image. where $l_1 = Fx_0$.
+
+\subsection{T2}
+Using the equation $x_i = K_i[R_i|t_i].X$ we can get two linearly independent equations for each camera, for two cameras we will have 4 linearly independent equations to solve for 3 unkowns in $X$.
+
+\subsection{T3}
+Since epipole $e$ is the image of the center of the other camera $C'$ it can be computed as $e = PC'$. 
+Since all epipolar planes rotate around the same baseline, then all epipolar lines intersect at the epipole point.
+
+\subsection{T4}
+For each corresponding points $x$ , $x'$ it satfies the following equation $x'^TFx=0$, where F is a 3*3 matrix (9 unkowns). We can set up a homogeneous linear system with 9 unkowns, and given enough corresponding points we can solve for the 9 unkowns of F.
+\subsection{T5}
+Given the camera calibration, the fundamental matrix can be computed using the following equation \begin{equation} F = K'^-^T.[t].R.K^-^1 \end{equation}
+\section{Implementation}
+
+You may find the implementation code inside the \lstinline{main.py} file. To run the code, call \lstinline{python main.py}.
+
+\end{document}
