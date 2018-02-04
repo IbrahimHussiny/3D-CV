@@ -1,0 +1,15 @@
+There are two datasets and two separate templates python files, one for each dataset.
+** The two templates are very similar. We are keeping them separate because of the different parameters **
+
+Starter codes are given in the folowing files:
+flowers.py
+kitti.py
+
+We provide helper functions to perform the following functions:
+1. writing depth to image: write_depth_to_image()
+2. Converting depth value to 3D: depth_to_3d()
+3. Checking if a pixel is an outlier: is_outlier()
+4. Ply creator from 3D points, so that you can just drop the ply file into Meshlab: ply_creator()
+5. Sub_pixel cropping; for example if you want to crop a 5x5 patch centered at [4.89, 5.88]: use sub_pixel_crop()
+
+if you have any question or feedback, just send us an email: threedcv@dfki.uni-kl.de
